@@ -1,0 +1,703 @@
+{
+  "source": "main-overleaf-20261117-081216utc.tex, active lines. Printed statistics use the paper’s precision.",
+  "scaling": {
+    "domain": "Simulated packing",
+    "ood_tasks": {
+      "value": 12,
+      "tex_lines": "L795"
+    },
+    "horizon_min": {
+      "value": 6,
+      "tex_lines": "L1625-1650"
+    },
+    "trials_per_point": {
+      "value": 600,
+      "tex_lines": "L791"
+    },
+    "points": [
+      {
+        "hours": {
+          "value": 0.65,
+          "tex_lines": "L1481"
+        },
+        "standard": {
+          "value": 16.5,
+          "tex_lines": "L1636"
+        },
+        "beta": {
+          "value": 6.0,
+          "tex_lines": "L1637"
+        },
+        "standard_earlier_limits": {
+          "value": [
+            14,
+            15.8
+          ],
+          "tex_lines": "L1636"
+        },
+        "beta_earlier_limits": {
+          "value": [
+            4.7,
+            5.7
+          ],
+          "tex_lines": "L1637"
+        }
+      },
+      {
+        "hours": {
+          "value": 1.3,
+          "tex_lines": "L1481"
+        },
+        "standard": {
+          "value": 26.8,
+          "tex_lines": "L1639"
+        },
+        "beta": {
+          "value": 43.2,
+          "tex_lines": "L1640"
+        },
+        "standard_earlier_limits": {
+          "value": [
+            21.3,
+            25.3
+          ],
+          "tex_lines": "L1639"
+        },
+        "beta_earlier_limits": {
+          "value": [
+            32.8,
+            40.2
+          ],
+          "tex_lines": "L1640"
+        }
+      },
+      {
+        "hours": {
+          "value": 2.6,
+          "tex_lines": "L1481"
+        },
+        "standard": {
+          "value": 46.5,
+          "tex_lines": "L1642"
+        },
+        "beta": {
+          "value": 60.3,
+          "tex_lines": "L1643"
+        },
+        "standard_earlier_limits": {
+          "value": [
+            36.3,
+            44
+          ],
+          "tex_lines": "L1642"
+        },
+        "beta_earlier_limits": {
+          "value": [
+            49.7,
+            58
+          ],
+          "tex_lines": "L1643"
+        }
+      },
+      {
+        "hours": {
+          "value": 5.2,
+          "tex_lines": "L1481"
+        },
+        "standard": {
+          "value": 58.7,
+          "tex_lines": "L1645"
+        },
+        "beta": {
+          "value": 69.3,
+          "tex_lines": "L1646"
+        },
+        "standard_earlier_limits": {
+          "value": [
+            47.8,
+            56.7
+          ],
+          "tex_lines": "L1645"
+        },
+        "beta_earlier_limits": {
+          "value": [
+            55.5,
+            65.2
+          ],
+          "tex_lines": "L1646"
+        }
+      }
+    ]
+  },
+  "matched_budget_cbc": {
+    "simulation": {
+      "standard": {
+        "value": 54,
+        "tex_lines": "L1717"
+      },
+      "beta": {
+        "value": 85,
+        "tex_lines": "L1718"
+      },
+      "standard_slope": {
+        "value": 0.22,
+        "tex_lines": "L330"
+      },
+      "beta_slope": {
+        "value": 0.3,
+        "tex_lines": "L330"
+      }
+    },
+    "real_packing": {
+      "standard": {
+        "value": 72,
+        "tex_lines": "L1720"
+      },
+      "beta": {
+        "value": 125,
+        "tex_lines": "L1721"
+      },
+      "standard_slope": {
+        "value": 0.15,
+        "tex_lines": "L330"
+      },
+      "beta_slope": {
+        "value": 0.37,
+        "tex_lines": "L330"
+      }
+    },
+    "lego": {
+      "standard": {
+        "value": 15,
+        "tex_lines": "L1723"
+      },
+      "beta": {
+        "value": 19,
+        "tex_lines": "L1724"
+      }
+    }
+  },
+  "real_zero_shot": {
+    "real_xarm": {
+      "pending_final": true,
+      "standard_success": {
+        "value": "4/20",
+        "tex_lines": "L642-644",
+        "pending_final": true
+      },
+      "beta_success": {
+        "value": "12/20",
+        "tex_lines": "L642-644",
+        "pending_final": true
+      },
+      "standard_progress_pct": {
+        "value": 45.0,
+        "tex_lines": "L642-644",
+        "pending_final": true
+      },
+      "beta_progress_pct": {
+        "value": 74.4,
+        "tex_lines": "L642-644",
+        "pending_final": true
+      }
+    },
+    "pants": {
+      "pending_final": true,
+      "standard_success": {
+        "value": "3/20",
+        "tex_lines": "L646-648",
+        "pending_final": true
+      },
+      "beta_success": {
+        "value": "14/20",
+        "tex_lines": "L646-648",
+        "pending_final": true
+      },
+      "standard_progress_pct": {
+        "value": 47.5,
+        "tex_lines": "L646-648",
+        "pending_final": true
+      },
+      "beta_progress_pct": {
+        "value": 83.9,
+        "tex_lines": "L646-648",
+        "pending_final": true
+      }
+    },
+    "t_shirt": {
+      "tex_lines": "L650-652",
+      "standard": {
+        "success": "2/10",
+        "progress_pct": 60.0
+      },
+      "beta_data": {
+        "success": "6/10",
+        "progress_pct": 85.2
+      },
+      "note": "ten trials per policy; to be updated to twenty"
+    }
+  },
+  "real_online_finetuning": {
+    "pending_final": true,
+    "standard": {
+      "initial_success_pct": {
+        "value": 20,
+        "tex_lines": "L1099-1101",
+        "pending_final": true
+      },
+      "final_success_pct": {
+        "value": 20,
+        "tex_lines": "L1099-1101",
+        "pending_final": true
+      },
+      "success_wilson_interval": {
+        "value": [
+          8.1,
+          41.6
+        ],
+        "tex_lines": "L1099-1101",
+        "pending_final": true
+      },
+      "initial_progress_pct": {
+        "value": 45,
+        "tex_lines": "L1099-1101",
+        "pending_final": true
+      },
+      "final_progress_pct": {
+        "value": 68.3,
+        "tex_lines": "L1099-1101",
+        "pending_final": true
+      },
+      "progress_bootstrap_interval": {
+        "value": [
+          59.4,
+          77.2
+        ],
+        "tex_lines": "L1099-1101",
+        "pending_final": true
+      },
+      "rollouts": {
+        "value": 82,
+        "tex_lines": "L1116",
+        "pending_final": true
+      }
+    },
+    "beta": {
+      "initial_success_pct": {
+        "value": 60,
+        "tex_lines": "L1102-1104",
+        "pending_final": true
+      },
+      "final_success_pct": {
+        "value": 85,
+        "tex_lines": "L1102-1104",
+        "pending_final": true
+      },
+      "success_wilson_interval": {
+        "value": [
+          64,
+          94.8
+        ],
+        "tex_lines": "L1102-1104",
+        "pending_final": true
+      },
+      "initial_progress_pct": {
+        "value": 74.4,
+        "tex_lines": "L1102-1104",
+        "pending_final": true
+      },
+      "final_progress_pct": {
+        "value": 98.3,
+        "tex_lines": "L1102-1104",
+        "pending_final": true
+      },
+      "progress_bootstrap_interval": {
+        "value": [
+          96.7,
+          100
+        ],
+        "tex_lines": "L1102-1104",
+        "pending_final": true
+      },
+      "rollouts": {
+        "value": 28,
+        "tex_lines": "L1116",
+        "pending_final": true
+      }
+    },
+    "scored_trials": {
+      "value": 20,
+      "tex_lines": "L1110, L1116"
+    },
+    "admitted": {
+      "value": 20,
+      "tex_lines": "L1110, L1116"
+    },
+    "interval_level": {
+      "value": 95,
+      "tex_lines": "L1110"
+    }
+  },
+  "dataset_hours": {
+    "simulation": {
+      "standard": {
+        "value": 6.1,
+        "tex_lines": "L1490"
+      },
+      "beta": {
+        "value": 5.9,
+        "tex_lines": "L1490"
+      }
+    },
+    "real_packing": {
+      "standard": {
+        "value": 4.4,
+        "tex_lines": "L1491"
+      },
+      "beta": {
+        "value": 4.9,
+        "tex_lines": "L1491"
+      }
+    },
+    "lego": {
+      "standard": {
+        "value": 4.0,
+        "tex_lines": "L1492"
+      },
+      "beta": {
+        "value": 4.0,
+        "tex_lines": "L1492"
+      }
+    },
+    "pants": {
+      "standard": {
+        "value": 8.1,
+        "tex_lines": "L1493"
+      },
+      "beta": {
+        "value": 7.9,
+        "tex_lines": "L1493"
+      }
+    },
+    "t_shirt": {
+      "pending_final": true,
+      "value": null,
+      "tex_lines": "L1494",
+      "note": "Hours withheld in this anonymous version."
+    }
+  },
+  "cracker_box": {
+    "states": {
+      "value": 4,
+      "tex_lines": "L303, L307"
+    },
+    "standard": {
+      "value": 3,
+      "tex_lines": "L303, L307"
+    },
+    "beta": {
+      "value": 7,
+      "tex_lines": "L303, L307"
+    }
+  },
+  "cbc_selections": {
+    "value": 1000,
+    "tex_lines": "L1708, L1727"
+  },
+  "zero_shot": {
+    "Short, OOD": {
+      "standard_success": {
+        "value": "136/150",
+        "tex_lines": "L612"
+      },
+      "beta_success": {
+        "value": "148/150",
+        "tex_lines": "L612"
+      },
+      "standard_progress_pct": {
+        "value": 95.4,
+        "tex_lines": "L613"
+      },
+      "beta_progress_pct": {
+        "value": 99.4,
+        "tex_lines": "L613"
+      }
+    },
+    "Medium, ID": {
+      "standard_success": {
+        "value": "121/150",
+        "tex_lines": "L616"
+      },
+      "beta_success": {
+        "value": "137/150",
+        "tex_lines": "L616"
+      },
+      "standard_progress_pct": {
+        "value": 88.4,
+        "tex_lines": "L617"
+      },
+      "beta_progress_pct": {
+        "value": 94.3,
+        "tex_lines": "L617"
+      }
+    },
+    "Medium, OOD": {
+      "standard_success": {
+        "value": "142/200",
+        "tex_lines": "L620"
+      },
+      "beta_success": {
+        "value": "183/200",
+        "tex_lines": "L620"
+      },
+      "standard_progress_pct": {
+        "value": 84.9,
+        "tex_lines": "L621"
+      },
+      "beta_progress_pct": {
+        "value": 94.7,
+        "tex_lines": "L621"
+      }
+    },
+    "Long, ID": {
+      "standard_success": {
+        "value": "50/250",
+        "tex_lines": "L624"
+      },
+      "beta_success": {
+        "value": "85/250",
+        "tex_lines": "L624"
+      },
+      "standard_progress_pct": {
+        "value": 41.4,
+        "tex_lines": "L625"
+      },
+      "beta_progress_pct": {
+        "value": 58.9,
+        "tex_lines": "L625"
+      }
+    },
+    "Long, OOD": {
+      "standard_success": {
+        "value": "98/250",
+        "tex_lines": "L628"
+      },
+      "beta_success": {
+        "value": "144/250",
+        "tex_lines": "L628"
+      },
+      "standard_progress_pct": {
+        "value": 64.0,
+        "tex_lines": "L629"
+      },
+      "beta_progress_pct": {
+        "value": 77.6,
+        "tex_lines": "L629"
+      }
+    },
+    "YAM interlock": {
+      "standard_success": {
+        "value": "5/20",
+        "tex_lines": "L635"
+      },
+      "beta_success": {
+        "value": "19/20",
+        "tex_lines": "L635"
+      },
+      "standard_progress_pct": {
+        "value": 43.3,
+        "tex_lines": "L636"
+      },
+      "beta_progress_pct": {
+        "value": 96.7,
+        "tex_lines": "L636"
+      }
+    },
+    "YAM double": {
+      "standard_success": {
+        "value": "2/20",
+        "tex_lines": "L639"
+      },
+      "beta_success": {
+        "value": "6/20",
+        "tex_lines": "L639"
+      },
+      "standard_progress_pct": {
+        "value": 35.8,
+        "tex_lines": "L640"
+      },
+      "beta_progress_pct": {
+        "value": 59.4,
+        "tex_lines": "L640"
+      }
+    }
+  },
+  "rollout_minutes": {
+    "value": [
+      2,
+      4,
+      6
+    ],
+    "tex_lines": "L1632–1634"
+  },
+  "sim_online": {
+    "tasks": {
+      "value": 5,
+      "tex_lines": "L1053"
+    },
+    "admitted": {
+      "value": 50,
+      "tex_lines": "L1076, L1660"
+    },
+    "standard": {
+      "initial": {
+        "value": 39.2,
+        "tex_lines": "L1053, L1076"
+      },
+      "final": {
+        "value": 52.0,
+        "tex_lines": "L1053, L1076"
+      },
+      "rollouts": {
+        "value": 3810,
+        "tex_lines": "L1053, L1076"
+      },
+      "experience_slope": {
+        "value": 0.2,
+        "tex_lines": "L1076"
+      }
+    },
+    "beta": {
+      "initial": {
+        "value": 57.6,
+        "tex_lines": "L1053, L1076"
+      },
+      "final": {
+        "value": 73.2,
+        "tex_lines": "L1053, L1076"
+      },
+      "rollouts": {
+        "value": 160,
+        "tex_lines": "L1053, L1076"
+      },
+      "experience_slope": {
+        "value": 0.43,
+        "tex_lines": "L1076"
+      }
+    }
+  },
+  "ablations": {
+    "D1": {
+      "Standard · OOD Medium": {
+        "without": {
+          "value": 2.5,
+          "tex_lines": "L932"
+        },
+        "with_design": {
+          "value": 71.0,
+          "tex_lines": "L932"
+        }
+      },
+      "β-DATA · OOD Medium": {
+        "without": {
+          "value": 62.5,
+          "tex_lines": "L932"
+        },
+        "with_design": {
+          "value": 91.5,
+          "tex_lines": "L932"
+        }
+      },
+      "Standard · OOD Long": {
+        "without": {
+          "value": 4.8,
+          "tex_lines": "L932"
+        },
+        "with_design": {
+          "value": 39.2,
+          "tex_lines": "L932"
+        }
+      },
+      "β-DATA · OOD Long": {
+        "without": {
+          "value": 20.0,
+          "tex_lines": "L932"
+        },
+        "with_design": {
+          "value": 57.6,
+          "tex_lines": "L932"
+        }
+      }
+    },
+    "D2": {
+      "β-DATA · ID Long": {
+        "without": {
+          "value": 28.8,
+          "tex_lines": "L845"
+        },
+        "with_design": {
+          "value": 34.0,
+          "tex_lines": "L845"
+        }
+      },
+      "β-DATA · OOD Long": {
+        "without": {
+          "value": 41.6,
+          "tex_lines": "L845"
+        },
+        "with_design": {
+          "value": 57.6,
+          "tex_lines": "L845"
+        }
+      }
+    }
+  },
+  "postbc": {
+    "OOD": {
+      "tasks": {
+        "value": 12,
+        "tex_lines": "L666"
+      },
+      "postbc": {
+        "value": 64,
+        "tex_lines": "L666"
+      },
+      "standard": {
+        "value": 62.7,
+        "tex_lines": "L666"
+      },
+      "beta": {
+        "value": 79.2,
+        "tex_lines": "L666"
+      }
+    },
+    "ID": {
+      "tasks": {
+        "value": 8,
+        "tex_lines": "L666"
+      },
+      "postbc": {
+        "value": 43,
+        "tex_lines": "L666"
+      },
+      "standard": {
+        "value": 42.8,
+        "tex_lines": "L666"
+      },
+      "beta": {
+        "value": 55.5,
+        "tex_lines": "L666"
+      }
+    }
+  },
+  "zero_shot_limits": {
+    "simulation_min": {
+      "value": 6,
+      "tex_lines": "L664"
+    },
+    "xarm_min": {
+      "value": 5,
+      "tex_lines": "L664"
+    }
+  }
+}

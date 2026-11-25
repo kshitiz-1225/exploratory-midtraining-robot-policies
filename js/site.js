@@ -168,7 +168,7 @@
     if (document.hidden) visible.forEach(video => video.pause());
     updateWall();
   });
-  document.querySelector('a[aria-disabled="true"]').addEventListener('click', event => event.preventDefault());
+  document.querySelector('a[aria-disabled="true"]')?.addEventListener('click', event => event.preventDefault());
   updateWall();
 
   // The article ships its data tables so plots also work from a file URL.

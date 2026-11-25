@@ -166,7 +166,12 @@ nav a:hover, footer a:hover { color:var(--beta); text-decoration:underline; }
 .hero { padding-block:clamp(42px,5.5vw,82px) 38px; }
 .hero h1, .article h2, .article h3 { font-family:Georgia,"Times New Roman",serif; font-weight:normal; text-wrap:balance; color:var(--ink); }
 .hero h1 { max-width:980px; font-size:clamp(39px,4.5vw,66px); line-height:1.03; letter-spacing:-.039em; }
-.hero .authors { font-size:15px; margin-top:16px; }
+.hero .authors { font-size:17px; line-height:1.6; margin-top:16px; color:var(--ink); }
+.hero .authors span, .hero .affiliations span { white-space:nowrap; }
+.hero .affiliations span { margin-inline:.5em; }
+.hero sup { font-size:.7em; line-height:0; margin-left:.08em; }
+.hero .affiliations { font-size:14px; margin-top:10px; }
+.hero .author-note { font-size:13px; margin-top:4px; }
 .hero-links { margin-top:20px; }
 .button.primary, button[aria-pressed="true"] { background:var(--ink); color:white; }
 .button.primary:hover, .button:hover { background:#284039; color:white; }

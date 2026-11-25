@@ -5,10 +5,13 @@
   const toggle = document.querySelector('#motion');
   const wallVideos = [...wall.querySelectorAll('video')];
   let wallPlaying = !reduced.matches;
+  const saveData = navigator.connection?.saveData;
+  let primed = false;
   const visible = new Set();
 
   function attach(video) {
     if (video.hasAttribute('src')) return;
+    if (!saveData) video.preload = 'auto';
     video.src = video.dataset.src;
     if (video.dataset.cue) {
       video.addEventListener('loadedmetadata', () => {
@@ -27,6 +30,7 @@
         video.pause();
         continue;
       }
+      if (!primed) continue;
       attach(video);
       if (video.paused) video.play().catch(error => {
         if (error.name === 'NotAllowedError') {
@@ -125,15 +129,67 @@
     }
     updateWall();
   });
-  // Cover images of videos further down the page load shortly before they scroll into view.
+  // Videos download before they are needed, so that playback starts at once. The teaser
+  // goes first. The others follow one at a time, shortly before they scroll into view.
+  const bufferedTo = video => video.buffered.length ? video.buffered.end(video.buffered.length - 1) : 0;
+  function whenBuffered(video, seconds, limit, done) {
+    let finished = false;
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      video.removeEventListener('progress', check);
+      done();
+    };
+    const check = () => {
+      if (bufferedTo(video) >= Math.min(seconds, (video.duration || Infinity) - 0.5)) finish();
+    };
+    video.addEventListener('progress', check);
+    video.addEventListener('error', finish, {once: true});
+    setTimeout(finish, limit);
+    check();
+  }
+  const queue = [];
+  let warming = false;
+  function warmNext() {
+    if (!primed || warming || !queue.length) return;
+    const video = queue.shift();
+    warming = true;
+    if (video.dataset.src) attach(video);
+    else video.preload = 'auto';
+    whenBuffered(video, 30, 8000, () => { warming = false; warmNext(); });
+  }
   const posters = new IntersectionObserver(entries => {
     for (const {target, isIntersecting} of entries) {
       if (!isIntersecting) continue;
-      target.poster = target.dataset.poster;
+      if (target.dataset.poster) target.poster = target.dataset.poster;
+      if (!saveData) queue.push(target);
       posters.unobserve(target);
     }
+    warmNext();
   }, {rootMargin: '900px 0px'});
-  document.querySelectorAll('video[data-poster]').forEach(video => posters.observe(video));
+  const teaser = document.querySelector('#teaser video');
+  const prime = () => {
+    if (primed) return;
+    primed = true;
+    updateWall();
+    warmNext();
+  };
+  if (!teaser || saveData) prime();
+  else {
+    let started = false;
+    const start = () => {
+      if (started) return;
+      started = true;
+      teaser.preload = 'auto';
+      whenBuffered(teaser, 12, 4000, prime);
+    };
+    if (document.readyState === 'complete') start();
+    else {
+      addEventListener('load', start, {once: true});
+      setTimeout(start, 2500);
+    }
+  }
+  document.querySelectorAll('video[data-poster], video[data-src]').forEach(video => posters.observe(video));
   document.querySelectorAll('video[data-src]').forEach(video => {
     observer.observe(video);
     if (wall.contains(video)) {

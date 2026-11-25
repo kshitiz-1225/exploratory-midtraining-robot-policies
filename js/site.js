@@ -168,6 +168,16 @@
     warmNext();
   }, {rootMargin: '900px 0px'});
   const teaser = document.querySelector('#teaser video');
+  if (teaser) {
+    const speed = document.querySelector('#teaser .speed');
+    const rates = [...speed.querySelectorAll('button')];
+    const setRate = rate => { teaser.defaultPlaybackRate = rate; teaser.playbackRate = rate; };
+    rates.forEach(button => button.addEventListener('click', () => setRate(+button.dataset.rate)));
+    teaser.addEventListener('ratechange', () => rates.forEach(button =>
+      button.setAttribute('aria-pressed', String(+button.dataset.rate === teaser.playbackRate))));
+    setRate(1.5);
+    speed.hidden = false;
+  }
   const prime = () => {
     if (primed) return;
     primed = true;
@@ -270,7 +280,7 @@
       const small = w < 500, h = small ? 235 : 250;
       const edgePlot = kind === 'edges';
       const top = 22, bottom = h - 32;
-      const left = edgePlot ? (small ? 54 : 90) : (small ? 44 : 56);
+      const left = edgePlot ? (small ? 58 : 94) : (small ? 60 : 62);
       const right = edgePlot ? (small ? 53 : 90) : 30;
       const x = i => left + i * (w-left-right) / (rows.length-1);
       const max = edgePlot ? 150 : 80;
@@ -279,10 +289,10 @@
       svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
       svg.setAttribute('aria-hidden', 'true');
       for (const n of (edgePlot ? [0,50,100,150] : [0,20,40,60,80])) {
-        add(svg, 'text', {x:19, y:y(n)+4, 'text-anchor':'end'}, n);
-        add(svg, 'line', {x1: 23, x2: 27, y1: y(n), y2: y(n), class:'baseline'});
+        add(svg, 'text', {x:25, y:y(n)+4, 'text-anchor':'end'}, n);
+        add(svg, 'line', {x1: 29, x2: 33, y1: y(n), y2: y(n), class:'baseline'});
       }
-      add(svg, 'path', {d:'M27 '+y(max)+'V'+y(0)+'H'+(w-6), class:'baseline'});
+      add(svg, 'path', {d:'M33 '+y(max)+'V'+y(0)+'H'+(w-6), class:'baseline'});
       rows.forEach(([label], i) => {
         const short = edgePlot && small ? ['Simulation','Real packing','LEGO'][i] : label;
         add(svg,'text',{x:x(i),y:h-10,'text-anchor':'middle'},short);
@@ -304,7 +314,7 @@
             const t = clamp((progress - delay) / (1 - lastDelay));
             const bx = x(i) + (col===1 ? -barWidth-barGap/2 : barGap/2), tall = (y(0)-y(val)) * easeOut(t);
             const r = Math.min(4, tall), tip = y(0)-tall;
-            if (tall > .5) add(g,'path',{class:'bar',d:'M'+bx+' '+y(0)+'V'+(tip+r)+'Q'+bx+' '+tip+' '+(bx+r)+' '+tip+'H'+(bx+barWidth-r)+'Q'+(bx+barWidth)+' '+tip+' '+(bx+barWidth)+' '+(tip+r)+'V'+y(0)+'Z'});
+            if (tall > .5) add(g,'path',{class:'chart-bar',d:'M'+bx+' '+y(0)+'V'+(tip+r)+'Q'+bx+' '+tip+' '+(bx+r)+' '+tip+'H'+(bx+barWidth-r)+'Q'+(bx+barWidth)+' '+tip+' '+(bx+barWidth)+' '+(tip+r)+'V'+y(0)+'Z'});
             add(g,'text',{x:bx+barWidth/2,y:y(val)-8,'text-anchor':'middle',class:'measure',opacity:clamp((t-.7)/.3)},val);
             return;
           }
@@ -318,7 +328,8 @@
           }
           if (col === 2) add(g,'circle',{cx:x(i),cy:y(val),r:5,class:'chart-marker',opacity:shown});
           else add(g,'rect',{x:x(i)-4.5,y:y(val)-4.5,width:9,height:9,class:'chart-marker',opacity:shown});
-          add(g,'text',{x:x(i),y:y(val)+(val>row[3-col] ? -10 : 17),'text-anchor':'middle',class:'measure',opacity:shown},val.toFixed(1)+'%');
+          const above = val > row[3-col], beside = !above && y(val)+18 > bottom-4;
+          add(g,'text',{x:x(i)+(beside ? 10 : small && !above && i ? 9 : 0),y:y(val)+(above ? -10 : beside ? 14 : 18),'text-anchor':beside ? 'start' : 'middle',class:'measure',opacity:shown},val.toFixed(1)+'%');
         });
         if (line.length > 1) svg.insertBefore(add(svg,'path',{d:'M '+line.join(' L '),class:'series-line '+method}), svg.querySelector('.obs'));
       }

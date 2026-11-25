@@ -53,9 +53,7 @@ nav a:hover, footer a:hover { color: white; }
 .button.primary:hover { background: white; color: black; }
 .button svg, .bar svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
 .button.primary svg { fill: currentColor; stroke: none; width: 15px; }
-.bar { margin-bottom: 13px; }
-.wall-title { display: flex; gap: 10px; align-items: center; font-size: 18px; font-weight: 550; letter-spacing: -.02em; }
-.wall-title svg { color: var(--muted); width: 19px; height: 19px; }
+.bar { margin-bottom: 13px; justify-content: flex-end; }
 .wall-actions { gap: 4px; }
 .wall-actions button { color: var(--muted); min-height: 36px; padding-inline: 10px; font-size: 13px; }
 .wall { display: grid; grid-template-columns: 1.55fr 1fr 1fr; grid-template-rows: repeat(2, minmax(0,1fr)); height: clamp(325px, 34vw, 462px); gap: var(--gap); }
@@ -176,7 +174,6 @@ nav a:hover, footer a:hover { color:var(--beta); text-decoration:underline; }
 .button.primary, button[aria-pressed="true"] { background:var(--ink); color:white; }
 .button.primary:hover, .button:hover { background:#284039; color:white; }
 .button[aria-disabled] { color:var(--muted); background:transparent; cursor:default; }
-.wall-title { font-size:18px; }
 .tile { background:#eef0e9; border:1px solid var(--line); }
 .wall { height:clamp(325px,31vw,407px); }
 .showcase { margin:28px 0 0; color:var(--muted); font-size:14px; }

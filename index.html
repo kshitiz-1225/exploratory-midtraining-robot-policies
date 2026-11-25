@@ -19,7 +19,7 @@
 <a class="skip" href="#abstract">Skip to abstract</a>
 <svg class="defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
   <symbol id="play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z"/></symbol>
-  <symbol id="paper-icon" viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z M14 3v5h4 M9 12h6 M9 16h6"/></symbol>
+  <symbol id="paper-icon" viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z M14 3v5h4 M9 12h6 M9 16h6"/></symbol><symbol id="quote-icon" viewBox="0 0 24 24"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></symbol>
   <symbol id="pause" viewBox="0 0 24 24"><path d="M8 5v14 M16 5v14"/></symbol>
   <symbol id="replay" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1 7 M4 4v6h6"/></symbol>
   <symbol id="wall-icon" viewBox="0 0 24 24"><rect x="2" y="4" width="9" height="16" rx="2"/><rect x="14" y="4" width="8" height="6" rx="1.5"/><rect x="14" y="14" width="8" height="6" rx="1.5"/></symbol>
@@ -39,7 +39,7 @@
 <a class="button primary" href="#teaser"><svg aria-hidden="true"><use href="#play"/></svg>Video</a>
 <span class="button soon" title="Code and checkpoints coming soon"><svg class="mark" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg>Code (soon)</span>
 <span class="button soon" title="Coming soon"><svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>Tweet</span>
-<a class="button" href="#citation">BibTeX</a></div></section>
+<a class="button" href="#citation"><svg aria-hidden="true"><use href="#quote-icon"/></svg>BibTeX</a></div></section>
 <section class="wrap" id="teaser" aria-label="Teaser video">
 <figure class="showcase"><video controls muted playsinline preload="metadata" poster="media/teaser.jpg" src="media/teaser.mp4" width="1920" height="1080" aria-label="Teaser video for Exploratory Midtraining for Robot Policies"></video></figure>
 </section>
@@ -207,14 +207,14 @@
 <p>In this paper, we studied whether broadening coverage over low-level behaviors improves robot policies and their ability to learn from autonomous interaction (“post-training”). Our tasks remain challenging even when a frontier LLM-level high-level planner specifies what to do next, and our results show that deliberately collecting this form of midtraining data improves policy performance and adaptation. Our results also suggest benefits to feature learning arising from broader and more intricate state-action coverage offered by β-DATA. More rigorously understanding how broader behavioral coverage affects the features a policy learns, and how these features contribute to downstream performance and improvement, is an important direction for future work. It remains unclear whether comparable benefits would emerge simply by scaling naturally collected demonstrations in a “grokking” fashion, or whether deliberate changes to data collection are needed.</p>
 <p>These behaviors also raise questions about how to enable more autonomous improvement. A policy trained to recover from perturbed states may be able to continue from the states left by its own failed attempts or execute behaviors needed to reset the environment. Frontier models could also help coordinate resets using learned low-level policies. Understanding when to continue pursuing a goal, when to reset, and how to carry out these resets could make autonomous practice more effective. There is also an opportunity to combine β-DATA with intervention-based collection. Human interventions provide targeted corrections for the states visited and mistakes made by a particular policy, while β-DATA can be collected independently of that policy. How to combine this reusable midtraining data with policy-specific corrections and autonomous experience remains an open question.</p>
 <p>Finally, we would like to understand how β-DATA scales across more tasks, embodiments, and adversaries. Our protocol requires only that perturbations be reversible by the operator; their form is otherwise unrestricted, so the collected data can vary substantially across adversaries. In our experiments, data was collected by 10 different people. Despite this variation, we observe consistent scaling trends in our experiments. This motivates a question analogous to those studied in language modeling: can heterogeneous human-generated data yield predictable improvements as collection scales? Testing whether the benefits of β-DATA persist at larger scales is a direct next step. Automating the adversary, or standardizing aspects of the protocol without restricting behavioral diversity, could make this collection easier. Understanding the trade-offs between standardization and embracing diversity and heterogeneity is another interesting direction for future work.</p></section>
-<section class="paper-section citation" id="citation"><h2>BibTeX</h2>
-<pre><code>@misc{betaData,
-  title = {Exploratory Midtraining for Robot Policies},
-  author = {{Kshitiz} and Zheyuan Hu and Robyn Wu and Yizhou Li and Yunchu Zhang and Vattanary Tevy and Kavya Tayal and Shawn Yin and Aykut Onol and Kushal Arora and Dhruv Shah and Abhishek Gupta and Zackory Erickson and Aviral Kumar},
-  year = {2026},
-  eprint = {2611.33130},
-  archivePrefix = {arXiv},
-  primaryClass = {cs.RO}
-}</code></pre></section></article></main>
+<section class="paper-section citation" id="citation"><h2>Citation</h2>
+<div class="cite-box"><button class="copy" type="button">Copy</button>
+<pre><code>@article{kshitiz2026exploratory,
+  title={Exploratory Midtraining for Robot Policies},
+  author={{Kshitiz} and Zheyuan Hu and Robyn Wu and Yizhou Li and Yunchu Zhang and Vattanary Tevy and Kavya Tayal and Shawn Yin and Aykut Onol and Kushal Arora and Dhruv Shah and Abhishek Gupta and Zackory Erickson and Aviral Kumar},
+  year={2026},
+  journal={arXiv preprint arXiv:2611.33130},
+  url={https://arxiv.org/abs/2611.33130}
+}</code></pre></div></section></article></main>
 <footer class="wrap"><a class="wordmark" href="#top">β-DATA</a><a href="#top">Back to top</a></footer>
 </body></html>

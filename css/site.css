@@ -252,7 +252,10 @@ figure img, .film video { display:block; max-width:100%; }
 .article .axis-title { font-size:13px; text-align:center; margin:0 auto 15px; color:var(--muted); }
 .data-details, .source-details { margin-top:12px; font-size:14px; }
 .data-details summary,.source-details summary { width:fit-content; padding-block:5px; color:var(--beta); }
-.citation pre { padding:20px; border:1px solid var(--line); background:var(--card); border-radius:9px; font-size:14px; white-space:pre-wrap; overflow-wrap:anywhere; }
+.cite-box { position:relative; border:1px solid var(--line); background:var(--card); border-radius:9px; }
+.citation pre { margin:0; padding:20px; font-size:14px; white-space:pre-wrap; overflow-wrap:anywhere; }
+@media(max-width:650px) { .citation pre { padding-top:48px; } }
+.copy { position:absolute; top:12px; right:12px; padding:6px 14px; border:1px solid var(--line); border-radius:100px; background:var(--card); color:var(--muted); font-size:13px; font-weight:550; }
 footer { margin-top:54px; }
 @media(max-width:650px) {
   .article,.wrap { width:calc(100% - 32px); }

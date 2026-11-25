@@ -233,7 +233,17 @@
     if (document.hidden) visible.forEach(video => video.pause());
     updateWall();
   });
-  document.querySelector('a[aria-disabled="true"]')?.addEventListener('click', event => event.preventDefault());
+  const copy = document.querySelector('.copy');
+  copy?.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(document.querySelector('.citation code').textContent);
+      copy.textContent = 'Copied';
+    } catch {
+      copy.textContent = 'Selected';
+      getSelection().selectAllChildren(document.querySelector('.citation code'));
+    }
+    setTimeout(() => { copy.textContent = 'Copy'; }, 1600);
+  });
   updateWall();
 
   // The article ships its data tables so plots also work from a file URL.

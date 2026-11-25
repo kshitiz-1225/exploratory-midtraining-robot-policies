@@ -35,7 +35,7 @@ button { background: transparent; border: 0; }
 .nav-inner, .bar, .graph-controls, .network-head, .plot-heading, .inspect-top, footer { display: flex; align-items: center; justify-content: space-between; gap: var(--gap); }
 .nav-inner { min-height: 65px; }
 .wordmark { display: inline-flex; align-items: center; gap: 9px; font-size: 20px; font-weight: 740; letter-spacing: -.04em; text-decoration: none; }
-.logomark { width: 20px; height: 23px; background: radial-gradient(circle, currentColor 1.4px, transparent 1.6px) 0 0 / 5px 5px; border-radius: 6px 8px 6px 1px; transform: skew(-10deg); }
+.logomark { width: 22px; height: 22px; flex: none; }
 nav { display: flex; gap: 27px; }
 nav a, footer > a:last-child { font-size: 14px; color: var(--muted); text-decoration: none; }
 nav a { padding-block: 12px; }

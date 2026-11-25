@@ -197,6 +197,7 @@ figure img, .film video { display:block; max-width:100%; }
 .video-box video { width:100%; aspect-ratio:16/9; object-fit:contain; }
 .film figcaption, .explorer figcaption, .training figcaption { margin-top:10px; }
 .film figcaption strong { display:block; color:var(--ink); margin-bottom:2px; }
+.film figcaption .speed { margin-left:6px; font-weight:500; color:var(--muted); font-variant-numeric:tabular-nums; }
 .training-inputs { border-block:1px solid var(--line); background:#eff2eb; padding:22px; }
 .training-inputs strong, .training-output strong { display:block; font-size:17px; line-height:1.3; }
 .training p, .task p { font-size:15px; line-height:1.55; margin:6px 0 0; }

@@ -134,7 +134,7 @@
     video.addEventListener('error', () => {
       const note = document.createElement('span');
       note.className = 'media-error';
-      note.textContent = 'Video unavailable. The poster shows the recorded scene.';
+      note.textContent = 'Video unavailable.';
       video.insertAdjacentElement('afterend', note);
     }, {once: true});
     if (video.dataset.end) {

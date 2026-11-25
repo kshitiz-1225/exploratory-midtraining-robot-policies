@@ -82,9 +82,9 @@
       frame.classList.toggle('rgb', frames.swap);
       frame.classList.toggle('strip-camera', !!frames.interior);
       frame.classList.toggle('box-camera', domain === 'real_packing');
-      if (substitute) note = 'State example from another annotated transition. Edge footage unavailable.';
-      else if (frames.interior) note = 'β-DATA · camera frame during the annotated transfer';
-      else note += ' · ' + armNames[collection] + (frames.boundary ? ' boundary frame' : ' frame');
+      if (substitute) note = 'Frame from another transfer through this state.';
+      else if (frames.interior) note = 'β-DATA · frame during the transfer';
+      else if (activeEdge.membership === 'shared') note += ' · frame from ' + armNames[collection];
     } else frame.removeAttribute('src');
     $('frame-description').textContent = note;
     document.querySelectorAll('[data-side]').forEach(b => {

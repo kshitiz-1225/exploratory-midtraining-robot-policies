@@ -179,150 +179,124 @@
   },
   "real_zero_shot": {
     "real_xarm": {
-      "pending_final": true,
       "standard_success": {
         "value": "4/20",
-        "tex_lines": "L642-644",
-        "pending_final": true
+        "tex_lines": "L642-644"
       },
       "beta_success": {
         "value": "12/20",
-        "tex_lines": "L642-644",
-        "pending_final": true
+        "tex_lines": "L642-644"
       },
       "standard_progress_pct": {
         "value": 45.0,
-        "tex_lines": "L642-644",
-        "pending_final": true
+        "tex_lines": "L642-644"
       },
       "beta_progress_pct": {
         "value": 74.4,
-        "tex_lines": "L642-644",
-        "pending_final": true
+        "tex_lines": "L642-644"
       }
     },
     "pants": {
-      "pending_final": true,
       "standard_success": {
         "value": "3/20",
-        "tex_lines": "L646-648",
-        "pending_final": true
+        "tex_lines": "L646-648"
       },
       "beta_success": {
         "value": "14/20",
-        "tex_lines": "L646-648",
-        "pending_final": true
+        "tex_lines": "L646-648"
       },
       "standard_progress_pct": {
         "value": 47.5,
-        "tex_lines": "L646-648",
-        "pending_final": true
+        "tex_lines": "L646-648"
       },
       "beta_progress_pct": {
         "value": 83.9,
-        "tex_lines": "L646-648",
-        "pending_final": true
+        "tex_lines": "L646-648"
       }
     },
     "t_shirt": {
-      "tex_lines": "L650-652",
+      "tex_lines": "final main.tex L367-369",
       "standard": {
-        "success": "2/10",
-        "progress_pct": 60.0
+        "success": "5/20",
+        "progress_pct": 63.9
       },
       "beta_data": {
-        "success": "6/10",
-        "progress_pct": 85.2
-      },
-      "note": "ten trials per policy; to be updated to twenty"
+        "success": "9/20",
+        "progress_pct": 76.7
+      }
     }
   },
   "real_online_finetuning": {
-    "pending_final": true,
     "standard": {
       "initial_success_pct": {
         "value": 20,
-        "tex_lines": "L1099-1101",
-        "pending_final": true
+        "tex_lines": "L1099-1101"
       },
       "final_success_pct": {
         "value": 20,
-        "tex_lines": "L1099-1101",
-        "pending_final": true
+        "tex_lines": "L1099-1101"
       },
       "success_wilson_interval": {
         "value": [
           8.1,
           41.6
         ],
-        "tex_lines": "L1099-1101",
-        "pending_final": true
+        "tex_lines": "L1099-1101"
       },
       "initial_progress_pct": {
         "value": 45,
-        "tex_lines": "L1099-1101",
-        "pending_final": true
+        "tex_lines": "L1099-1101"
       },
       "final_progress_pct": {
         "value": 68.3,
-        "tex_lines": "L1099-1101",
-        "pending_final": true
+        "tex_lines": "L1099-1101"
       },
       "progress_bootstrap_interval": {
         "value": [
           59.4,
           77.2
         ],
-        "tex_lines": "L1099-1101",
-        "pending_final": true
+        "tex_lines": "L1099-1101"
       },
       "rollouts": {
         "value": 82,
-        "tex_lines": "L1116",
-        "pending_final": true
+        "tex_lines": "L1116"
       }
     },
     "beta": {
       "initial_success_pct": {
         "value": 60,
-        "tex_lines": "L1102-1104",
-        "pending_final": true
+        "tex_lines": "L1102-1104"
       },
       "final_success_pct": {
         "value": 85,
-        "tex_lines": "L1102-1104",
-        "pending_final": true
+        "tex_lines": "L1102-1104"
       },
       "success_wilson_interval": {
         "value": [
           64,
           94.8
         ],
-        "tex_lines": "L1102-1104",
-        "pending_final": true
+        "tex_lines": "L1102-1104"
       },
       "initial_progress_pct": {
         "value": 74.4,
-        "tex_lines": "L1102-1104",
-        "pending_final": true
+        "tex_lines": "L1102-1104"
       },
       "final_progress_pct": {
         "value": 98.3,
-        "tex_lines": "L1102-1104",
-        "pending_final": true
+        "tex_lines": "L1102-1104"
       },
       "progress_bootstrap_interval": {
         "value": [
           96.7,
           100
         ],
-        "tex_lines": "L1102-1104",
-        "pending_final": true
+        "tex_lines": "L1102-1104"
       },
       "rollouts": {
         "value": 28,
-        "tex_lines": "L1116",
-        "pending_final": true
+        "tex_lines": "L1116"
       }
     },
     "scored_trials": {
@@ -380,10 +354,14 @@
       }
     },
     "t_shirt": {
-      "pending_final": true,
-      "value": null,
-      "tex_lines": "L1494",
-      "note": "Hours withheld in this anonymous version."
+      "standard": {
+        "value": 4.2,
+        "tex_lines": "final main.tex L835"
+      },
+      "beta": {
+        "value": 4.6,
+        "tex_lines": "final main.tex L835"
+      }
     }
   },
   "cracker_box": {

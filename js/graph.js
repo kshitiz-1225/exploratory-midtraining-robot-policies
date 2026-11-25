@@ -5,7 +5,7 @@
   const svg = $('network');
   const object = $('object');
   const armNames = {beta: 'β-DATA', Standard: 'Standard demonstrations'};
-  const membership = {beta_only: 'β-DATA only', standard_only: 'Standard only', shared: 'Both collections'};
+  const membership = {beta_only: 'β-DATA only', standard_only: 'Standard only', shared: 'Both datasets'};
   const defaults = {sim_packing: 'cracker box', real_packing: 'whiteboard eraser', real_lego: 'blue brick'};
   let domain = 'sim_packing', arm = 'all', side = 'end';
   let activeEdge, activeState, pinned = false;
@@ -167,9 +167,9 @@
     }
     });
     if (!visible.length) {
-      const msg=tag('text',{x:260,y:160,'text-anchor':'middle',fill:'#aeaeac'});msg.textContent='No annotated transitions in this collection.';svg.append(msg);
+      const msg=tag('text',{x:260,y:160,'text-anchor':'middle',fill:'#aeaeac'});msg.textContent='No annotated transitions in this dataset.';svg.append(msg);
       $('witness').hidden=true;$('unavailable').hidden=false;$('selected-object').textContent=title(object.value);
-      $('transition').textContent='No transition';$('frame-description').textContent='Choose another collection or object.';
+      $('transition').textContent='No transition';$('frame-description').textContent='Choose another dataset or object.';
       document.querySelectorAll('[data-side]').forEach(b=>b.disabled=true);return;
     }
     const first=visible.find(e=>e.start==='large' && e.end==='medium' && frameFor(e)[1]) || visible.find(e=>e.frames.beta && e.frames.Standard) || visible[0];

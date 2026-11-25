@@ -242,7 +242,7 @@ figure img, .film video { display:block; max-width:100%; }
 .plot svg { width:100%; display:block; }
 .plot text { font:12px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; fill:var(--muted); font-variant-numeric:tabular-nums; }
 .plot text.measure { fill:currentColor; font-weight:600; font-size:14px; }
-.baseline { stroke:#cbd3c9; stroke-width:1; }
+.baseline { stroke:#b4beb3; stroke-width:1; fill:none; }
 .bar { fill:currentColor; }
 .obs.standard .bar { fill:url(#standard-hatch); }
 .hatch-ground { fill:var(--standard); opacity:.3; }

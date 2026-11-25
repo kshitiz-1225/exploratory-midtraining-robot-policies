@@ -278,9 +278,11 @@
       const svg = document.createElementNS(ns, 'svg');
       svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
       svg.setAttribute('aria-hidden', 'true');
-      for (const n of (edgePlot ? [0,50,100,150] : [0,20,40,60,80]))
-        add(svg, 'text', {x:21, y:y(n)+4, 'text-anchor':'end'}, n);
-      add(svg, 'line', {x1: 27, x2: w-6, y1: y(0), y2: y(0), class:'baseline'});
+      for (const n of (edgePlot ? [0,50,100,150] : [0,20,40,60,80])) {
+        add(svg, 'text', {x:19, y:y(n)+4, 'text-anchor':'end'}, n);
+        add(svg, 'line', {x1: 23, x2: 27, y1: y(n), y2: y(n), class:'baseline'});
+      }
+      add(svg, 'path', {d:'M27 '+y(max)+'V'+y(0)+'H'+(w-6), class:'baseline'});
       rows.forEach(([label], i) => {
         const short = edgePlot && small ? ['Simulation','Real packing','LEGO'][i] : label;
         add(svg,'text',{x:x(i),y:h-10,'text-anchor':'middle'},short);

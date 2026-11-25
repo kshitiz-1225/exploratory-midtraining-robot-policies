@@ -255,11 +255,15 @@
     parent.append(node);
     return node;
   }
+  const clamp = v => Math.max(0, Math.min(1, v));
+  const easeOut = t => 1 - Math.pow(1 - t, 4);
   function chart(figure) {
     const plot = figure.querySelector('.plot');
     const kind = figure.dataset.kind;
     const rows = [...figure.querySelectorAll('tbody tr')].map(row =>
       [row.cells[0].textContent, ...[...row.cells].slice(1).map(cell => parseFloat(cell.textContent))]);
+    const duration = 1100;
+    let progress = reduced.matches || !('IntersectionObserver' in window) ? 1 : 0;
     function draw() {
       const w = plot.clientWidth;
       if (!w) return;
@@ -274,30 +278,68 @@
       const svg = document.createElementNS(ns, 'svg');
       svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
       svg.setAttribute('aria-hidden', 'true');
-      for (const n of (edgePlot ? [0,50,100,150] : [0,20,40,60,80])) {
-        add(svg, 'line', {x1: 27, x2: w-6, y1: y(n), y2: y(n), class:'gridline'});
+      for (const n of (edgePlot ? [0,50,100,150] : [0,20,40,60,80]))
         add(svg, 'text', {x:21, y:y(n)+4, 'text-anchor':'end'}, n);
-      }
+      add(svg, 'line', {x1: 27, x2: w-6, y1: y(0), y2: y(0), class:'baseline'});
       rows.forEach(([label], i) => {
         const short = edgePlot && small ? ['Simulation','Real packing','LEGO'][i] : label;
         add(svg,'text',{x:x(i),y:h-10,'text-anchor':'middle'},short);
       });
+      if (edgePlot) {
+        const hatch = add(add(svg,'defs',{}),'pattern',{id:'standard-hatch',width:6,height:6,patternUnits:'userSpaceOnUse',patternTransform:'rotate(45)'});
+        add(hatch,'rect',{width:6,height:6,class:'hatch-ground'});
+        add(hatch,'line',{x1:1.5,x2:1.5,y1:0,y2:6,class:'hatch-line'});
+      }
+      const barWidth = small ? 18 : 24, barGap = 4;
+      const reach = x(0) + (x(rows.length-1)-x(0)) * easeOut(clamp(progress/.85));
       for (const [col, method] of [[1,'standard'],[2,'beta']]) {
+        const line = [];
         rows.forEach((row,i) => {
           const g=add(svg,'g',{class:'obs '+method});
-          const val=row[col], cx=x(i)+(edgePlot ? (col===1 ? -12 : 12) : 0);
-          if (i && kind === 'success') add(g,'path',{d:'M '+x(i-1)+' '+y(rows[i-1][col])+' L '+cx+' '+y(val),class:'series-line '+method});
-          if (edgePlot) add(g,'line',{x1:cx,x2:cx,y1:y(0),y2:y(val),class:'stem'});
-          if (col === 2) add(g,'circle',{cx,cy:y(val),r:5,class:'chart-marker'});
-          else add(g,'rect',{x:cx-4.5,y:y(val)-4.5,width:9,height:9,class:'chart-marker'});
-          const dy=edgePlot || val>row[3-col] ? -10 : 17;
-          add(g,'text',{x:cx,y:y(val)+dy,'text-anchor':'middle',class:'measure'},edgePlot ? val : val.toFixed(1)+'%');
+          const val=row[col];
+          if (edgePlot) {
+            const delay = i*.16 + (col-1)*.06, lastDelay = (rows.length-1)*.16 + .06;
+            const t = clamp((progress - delay) / (1 - lastDelay));
+            const bx = x(i) + (col===1 ? -barWidth-barGap/2 : barGap/2), tall = (y(0)-y(val)) * easeOut(t);
+            const r = Math.min(4, tall), tip = y(0)-tall;
+            if (tall > .5) add(g,'path',{class:'bar',d:'M'+bx+' '+y(0)+'V'+(tip+r)+'Q'+bx+' '+tip+' '+(bx+r)+' '+tip+'H'+(bx+barWidth-r)+'Q'+(bx+barWidth)+' '+tip+' '+(bx+barWidth)+' '+(tip+r)+'V'+y(0)+'Z'});
+            add(g,'text',{x:bx+barWidth/2,y:y(val)-8,'text-anchor':'middle',class:'measure',opacity:clamp((t-.7)/.3)},val);
+            return;
+          }
+          const shown = clamp(progress/.08) * clamp((reach - x(i) + 10) / 10);
+          if (kind === 'success') {
+            if (x(i) <= reach) line.push(x(i)+' '+y(val));
+            else if (i && x(i-1) < reach) {
+              const part = (reach - x(i-1)) / (x(i) - x(i-1));
+              line.push(reach+' '+(y(rows[i-1][col]) + (y(val) - y(rows[i-1][col])) * part));
+            }
+          }
+          if (col === 2) add(g,'circle',{cx:x(i),cy:y(val),r:5,class:'chart-marker',opacity:shown});
+          else add(g,'rect',{x:x(i)-4.5,y:y(val)-4.5,width:9,height:9,class:'chart-marker',opacity:shown});
+          add(g,'text',{x:x(i),y:y(val)+(val>row[3-col] ? -10 : 17),'text-anchor':'middle',class:'measure',opacity:shown},val.toFixed(1)+'%');
         });
+        if (line.length > 1) svg.insertBefore(add(svg,'path',{d:'M '+line.join(' L '),class:'series-line '+method}), svg.querySelector('.obs'));
       }
       plot.replaceChildren(svg);
     }
     new ResizeObserver(draw).observe(plot);
     draw();
+    if (progress === 1) return;
+    const seen = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      seen.disconnect();
+      const start = performance.now();
+      const finish = () => { if (progress < 1) { progress = 1; draw(); } };
+      if (reduced.matches) return finish();
+      requestAnimationFrame(function step(now) {
+        if (progress === 1) return;
+        progress = clamp((now - start) / duration);
+        draw();
+        if (progress < 1) requestAnimationFrame(step);
+      });
+      setTimeout(finish, duration + 400);
+    }, {threshold: .45});
+    seen.observe(plot);
   }
   document.querySelectorAll('figure.chart').forEach(chart);
 })();

@@ -242,16 +242,26 @@ figure img, .film video { display:block; max-width:100%; }
 .plot svg { width:100%; display:block; }
 .plot text { font:12px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; fill:var(--muted); font-variant-numeric:tabular-nums; }
 .plot text.measure { fill:currentColor; font-weight:600; font-size:14px; }
-.gridline { stroke:#cbd3c9; stroke-width:1; }
-.stem { stroke:currentColor; stroke-width:3; }
+.baseline { stroke:#cbd3c9; stroke-width:1; }
+.bar { fill:currentColor; }
+.obs.standard .bar { fill:url(#standard-hatch); }
+.hatch-ground { fill:var(--standard); opacity:.3; }
+.hatch-line { stroke:var(--standard); stroke-width:3; }
 .series-line { fill:none; stroke:currentColor; stroke-width:2; }
 .series-line.standard { stroke-dasharray:6 5; }
 .chart-marker { fill:currentColor; stroke:#f0f2ed; stroke-width:1.5; }
 .point { width:9px; height:9px; background:currentColor; border-radius:50%; }
 .point.standard { border-radius:0; }
+.chart[data-kind="edges"] .point { width:11px; height:11px; border-radius:2px; }
+.chart[data-kind="edges"] .point.standard { background:repeating-linear-gradient(45deg, currentColor 0 2.1px, color-mix(in srgb, currentColor 30%, transparent) 2.1px 4.2px); }
 .article .axis-title { font-size:13px; text-align:center; margin:0 auto 15px; color:var(--muted); }
 .data-details, .source-details { margin-top:12px; font-size:14px; }
 .data-details summary,.source-details summary { width:fit-content; padding-block:5px; color:var(--beta); }
+.takeaways { list-style:none; margin:20px 0 0; padding:0; max-width:70ch; }
+.takeaways li { padding:13px 0; border-top:1px solid var(--line); font-size:18px; font-weight:560; line-height:1.4; text-wrap:balance; }
+.takeaways li:first-child { border-top:0; padding-top:0; }
+.full-text { margin-top:4px; font-size:15px; }
+.full-text summary { width:fit-content; padding-block:5px; color:var(--beta); }
 .cite-box { position:relative; border:1px solid var(--line); background:var(--card); border-radius:9px; }
 .citation pre { margin:0; padding:20px; font-size:14px; white-space:pre-wrap; overflow-wrap:anywhere; }
 @media(max-width:650px) { .citation pre { padding-top:48px; } }
@@ -276,6 +286,7 @@ footer { margin-top:54px; }
   .task h3 { margin:0; }
   .task img { height:155px; }
   .chart { padding:17px 12px 12px; }
+  .takeaways li { font-size:16px; }
   .plot text.measure { font-size:12px; }
   .showcase { font-size:13px; }
   .article .film figcaption,.article .frames figcaption { font-size:13px; }

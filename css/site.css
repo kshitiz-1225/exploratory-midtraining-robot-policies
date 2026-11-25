@@ -260,11 +260,6 @@ figure img, .film video { display:block; max-width:100%; }
 .article .axis-title { font-size:13px; text-align:center; margin:0 auto 15px; color:var(--muted); }
 .data-details, .source-details { margin-top:12px; font-size:14px; }
 .data-details summary,.source-details summary { width:fit-content; padding-block:5px; color:var(--beta); }
-.takeaways { list-style:none; margin:20px 0 0; padding:0; max-width:70ch; }
-.takeaways li { padding:13px 0; border-top:1px solid var(--line); font-size:18px; font-weight:560; line-height:1.4; text-wrap:balance; }
-.takeaways li:first-child { border-top:0; padding-top:0; }
-.full-text { margin-top:4px; font-size:15px; }
-.full-text summary { width:fit-content; padding-block:5px; color:var(--beta); }
 .cite-box { position:relative; border:1px solid var(--line); background:var(--card); border-radius:9px; }
 .citation pre { margin:0; padding:20px; font-size:14px; white-space:pre-wrap; overflow-wrap:anywhere; }
 @media(max-width:650px) { .citation pre { padding-top:48px; } }
@@ -290,7 +285,6 @@ footer { margin-top:54px; }
   .task img { height:155px; }
   .chart { padding:17px 12px 12px; }
   .chart .plot-heading { flex-wrap:wrap; gap:6px 16px; }
-  .takeaways li { font-size:16px; }
   .plot text.measure { font-size:12px; }
   .showcase { font-size:13px; }
   .article .film figcaption,.article .frames figcaption { font-size:13px; }

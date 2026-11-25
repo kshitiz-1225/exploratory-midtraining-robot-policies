@@ -167,7 +167,6 @@ nav a:hover, footer a:hover { color:var(--beta); text-decoration:underline; }
 .hero h1, .article h2, .article h3 { font-family:Georgia,"Times New Roman",serif; font-weight:normal; text-wrap:balance; color:var(--ink); }
 .hero h1 { max-width:980px; font-size:clamp(39px,4.5vw,66px); line-height:1.03; letter-spacing:-.039em; }
 .hero .authors { font-size:15px; margin-top:16px; }
-.hero .thesis { font-size:clamp(17px,1.4vw,21px); margin:15px auto 0; color:var(--ink); }
 .hero-links { margin-top:20px; }
 .button.primary, button[aria-pressed="true"] { background:var(--ink); color:white; }
 .button.primary:hover, .button:hover { background:#284039; color:white; }

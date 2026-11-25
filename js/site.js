@@ -125,6 +125,15 @@
     }
     updateWall();
   });
+  // Cover images of videos further down the page load shortly before they scroll into view.
+  const posters = new IntersectionObserver(entries => {
+    for (const {target, isIntersecting} of entries) {
+      if (!isIntersecting) continue;
+      target.poster = target.dataset.poster;
+      posters.unobserve(target);
+    }
+  }, {rootMargin: '900px 0px'});
+  document.querySelectorAll('video[data-poster]').forEach(video => posters.observe(video));
   document.querySelectorAll('video[data-src]').forEach(video => {
     observer.observe(video);
     if (wall.contains(video)) {

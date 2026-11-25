@@ -137,6 +137,7 @@ footer { border-top: 1px solid var(--line); padding: 20px 0 35px; }
   .tile-bricks { grid-column: span 2; grid-row: auto; }
   .tile figcaption { flex-direction: column; gap: 0; }
   .tile-bricks figcaption { flex-direction: row; }
+  .tile-bricks video, .tile-bricks .wall-poster { object-position: center bottom; transform: scale(1.03); transform-origin: center bottom; }
   .tile strong { font-size: 13px; }
   .tile span { font-size: 12px; }
   .graph-controls { align-items: flex-start; flex-direction: column; }

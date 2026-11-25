@@ -1,4 +1,3 @@
-/* Directed transitions from the annotation CSVs. File URLs support classic scripts. */
 const graphs = {
  "sim_packing": [
   {

@@ -27,6 +27,33 @@
     const collection = arm === 'all' ? (edge.frames.beta ? 'beta' : 'Standard') : arm;
     return [collection, edge.frames[collection]];
   }
+  // Fetch the frames of the drawn edges at low priority so hover shows them at once.
+  // Start after the selected frame has arrived so the preloads do not compete with it.
+  const warmed = new Set();
+  let explorerNear = false;
+  function warm() {
+    if (!explorerNear) return;
+    const witness = $('witness');
+    if (!witness.hidden && !witness.complete) {
+      witness.addEventListener('load', warm, {once: true});
+      witness.addEventListener('error', warm, {once: true});
+      return;
+    }
+    let budget = 40;
+    for (const e of visible) {
+      const frames = frameFor(e)[1];
+      if (!frames) continue;
+      for (const name of [frames.start, frames.end]) {
+        if (!name || warmed.has(name) || budget <= 0) continue;
+        warmed.add(name);
+        budget--;
+        const img = new Image();
+        img.fetchPriority = 'low';
+        img.decoding = 'async';
+        img.src = 'media/frames/' + name;
+      }
+    }
+  }
   function showFrame() {
     let [collection, frames] = frameFor(activeEdge);
     const selection = activeState ? title(locationName(activeState)) : title(locationName(activeEdge.start)) + ' → ' + title(locationName(activeEdge.end));
@@ -174,6 +201,7 @@
     }
     const first=visible.find(e=>e.start==='large' && e.end==='medium' && frameFor(e)[1]) || visible.find(e=>e.frames.beta && e.frames.Standard) || visible[0];
     choose(first,null,svg.querySelectorAll('.edge')[visible.indexOf(first)]);
+    warm();
   }
   function changeDomain() {
     const names=[...new Set(graphs[domain].map(e=>e.object))].sort();
@@ -195,4 +223,11 @@
     $('unavailable').hidden=false;
   });
   changeDomain();
+  const near = new IntersectionObserver(entries => {
+    if (!entries.some(e => e.isIntersecting)) return;
+    near.disconnect();
+    explorerNear = true;
+    warm();
+  }, {rootMargin: '100% 0px'});
+  near.observe(svg);
 })();

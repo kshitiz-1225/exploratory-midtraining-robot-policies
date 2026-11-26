@@ -306,3 +306,29 @@ footer { margin-top:54px; }
 .clock label { margin-left:auto; }
 .clock button { border:1px solid var(--line); border-radius:18px; padding:6px 12px; font-size:14px; }
 .article .table-group th { padding-top:16px; font-size:13px; font-weight:650; color:var(--muted); }
+.affil-logos { display:flex; align-items:center; gap:22px; }
+.affil-logos img { display:block; width:auto; height:26px; }
+.affil-logos .logo-cmu { height:16px; }
+.affil-logos .logo-princeton { height:32px; }
+.toc { position:fixed; z-index:3; top:50%; left:max(16px, calc(50% - 459px - 200px)); width:168px; transform:translateY(-50%); display:none; flex-direction:column; gap:0; opacity:0; visibility:hidden; transition:opacity .35s var(--motion), visibility .35s; }
+.toc.on { opacity:1; visibility:visible; }
+.toc a { position:relative; padding:7px 0 7px 16px; font-size:14px; line-height:1.3; color:var(--muted); text-decoration:none; }
+.toc a::before { content:""; position:absolute; left:2px; top:50%; width:6px; height:6px; border-radius:50%; background:var(--ink); transform:translateY(-50%) scale(0); transition:transform .3s var(--motion); }
+.toc a[aria-current="true"] { color:var(--ink); }
+.toc a[aria-current="true"]::before { transform:translateY(-50%) scale(1); }
+.toc a:hover { color:var(--beta); text-decoration:none; }
+@media (min-width:1260px) { .toc { display:flex; } }
+@media (max-width:840px) {
+  .nav-inner { flex-wrap:wrap; row-gap:4px; padding-block:10px; }
+  .affil-logos { gap:16px; }
+  .affil-logos img { height:20px; }
+  .affil-logos .logo-cmu { height:12px; }
+  .affil-logos .logo-princeton { height:25px; }
+}
+@media (max-width:520px) {
+  .nav-inner { justify-content:center; }
+  .affil-logos { width:100%; justify-content:space-between; gap:10px; }
+  .affil-logos img { height:17px; }
+  .affil-logos .logo-cmu { height:10px; }
+  .affil-logos .logo-princeton { height:21px; }
+}

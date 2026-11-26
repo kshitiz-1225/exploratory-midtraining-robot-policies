@@ -356,3 +356,23 @@
   }
   document.querySelectorAll('figure.chart').forEach(chart);
 })();
+(() => {
+  const toc = document.querySelector('.toc');
+  const article = document.querySelector('.article');
+  if (!toc || !article) return;
+  const links = [...toc.querySelectorAll('a')];
+  const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+  let queued = false;
+  const update = () => {
+    queued = false;
+    const box = article.getBoundingClientRect();
+    toc.classList.toggle('on', box.top < innerHeight * .5 && box.bottom > innerHeight * .5);
+    let current = 0;
+    sections.forEach((s, i) => { if (s && s.getBoundingClientRect().top <= innerHeight * .35) current = i; });
+    links.forEach((a, i) => i === current ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current'));
+  };
+  const queue = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
+  addEventListener('scroll', queue, {passive: true});
+  addEventListener('resize', queue);
+  update();
+})();

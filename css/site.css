@@ -332,3 +332,5 @@ footer { margin-top:54px; }
   .affil-logos .logo-cmu { height:10px; }
   .affil-logos .logo-princeton { height:21px; }
 }
+.hero .authors a { color:inherit; text-decoration:underline; text-decoration-color:var(--line); text-decoration-thickness:1px; text-underline-offset:.22em; transition:color .2s, text-decoration-color .2s; }
+.hero .authors a:hover { color:var(--beta); text-decoration-color:currentColor; }

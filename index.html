@@ -3,14 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="β-DATA helps robot policies learn to recover from disruptions. See how exploratory midtraining works, with hardware demos, simulation results, and the arXiv paper.">
+  <meta name="description" content="β-DATA midtrains pretrained robot policies on perturbation and recovery data for better zero-shot generalization, test-time scaling and online finetuning.">
   <title>Exploratory Midtraining for Robot Policies | β-DATA</title>
   <link rel="canonical" href="https://kshitiz-1225.github.io/exploratory-midtraining-robot-policies/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Exploratory Midtraining for Robot Policies">
-  <meta property="og:description" content="β-DATA helps robot policies learn to recover from disruptions. See how exploratory midtraining works, with hardware demos, simulation results, and the arXiv paper.">
+  <meta property="og:description" content="β-DATA midtrains pretrained robot policies on perturbation and recovery data for better zero-shot generalization, test-time scaling and online finetuning.">
   <meta property="og:url" content="https://kshitiz-1225.github.io/exploratory-midtraining-robot-policies/">
   <meta property="og:image" content="https://kshitiz-1225.github.io/exploratory-midtraining-robot-policies/media/teaser.jpg">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:alt" content="β-DATA title with robot videos inside the letters">
+  <meta property="og:site_name" content="β-DATA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Exploratory Midtraining for Robot Policies">
+  <meta name="twitter:description" content="β-DATA midtrains pretrained robot policies on perturbation and recovery data for better zero-shot generalization, test-time scaling and online finetuning.">
+  <meta name="twitter:image" content="https://kshitiz-1225.github.io/exploratory-midtraining-robot-policies/media/teaser.jpg">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -18,21 +26,24 @@
   "name": "Exploratory Midtraining for Robot Policies",
   "headline": "Exploratory Midtraining for Robot Policies",
   "alternateName": "β-DATA",
-  "description": "β-DATA helps robot policies learn to recover from disruptions. See how exploratory midtraining works, with hardware demos, simulation results, and the arXiv paper.",
+  "description": "β-DATA midtrains pretrained robot policies on perturbation and recovery data for better zero-shot generalization, test-time scaling and online finetuning.",
   "url": "https://kshitiz-1225.github.io/exploratory-midtraining-robot-policies/",
   "mainEntityOfPage": "https://kshitiz-1225.github.io/exploratory-midtraining-robot-policies/",
   "author": [
     {
       "@type": "Person",
-      "name": "Kshitiz"
+      "name": "Kshitiz",
+      "url": "https://kshitiz-1225.github.io/"
     },
     {
       "@type": "Person",
-      "name": "Zheyuan Hu"
+      "name": "Zheyuan Hu",
+      "url": "https://huzheyuan.io/"
     },
     {
       "@type": "Person",
-      "name": "Robyn Wu"
+      "name": "Robyn Wu",
+      "url": "https://www.linkedin.com/in/robynwuprofile/"
     },
     {
       "@type": "Person",
@@ -40,11 +51,13 @@
     },
     {
       "@type": "Person",
-      "name": "Yunchu Zhang"
+      "name": "Yunchu Zhang",
+      "url": "https://yunchuzhang.github.io/"
     },
     {
       "@type": "Person",
-      "name": "Vattanary Tevy"
+      "name": "Vattanary Tevy",
+      "url": "https://vattanaryt.github.io/portfolio/"
     },
     {
       "@type": "Person",
@@ -56,32 +69,39 @@
     },
     {
       "@type": "Person",
-      "name": "Aykut Onol"
+      "name": "Aykut Onol",
+      "url": "https://scholar.google.com/citations?user=mMYFmOYAAAAJ"
     },
     {
       "@type": "Person",
-      "name": "Kushal Arora"
+      "name": "Kushal Arora",
+      "url": "https://kushalarora.github.io/"
     },
     {
       "@type": "Person",
-      "name": "Dhruv Shah"
+      "name": "Dhruv Shah",
+      "url": "https://dhruvshah.me/"
     },
     {
       "@type": "Person",
-      "name": "Abhishek Gupta"
+      "name": "Abhishek Gupta",
+      "url": "https://homes.cs.washington.edu/~abhgupta/"
     },
     {
       "@type": "Person",
-      "name": "Zackory Erickson"
+      "name": "Zackory Erickson",
+      "url": "https://zackory.com/"
     },
     {
       "@type": "Person",
-      "name": "Aviral Kumar"
+      "name": "Aviral Kumar",
+      "url": "https://aviralkumar2907.github.io/"
     }
   ],
   "sameAs": "https://arxiv.org/abs/2611.33130",
   "identifier": "arXiv:2611.33130",
-  "image": "https://kshitiz-1225.github.io/exploratory-midtraining-robot-policies/media/teaser.jpg"
+  "image": "https://kshitiz-1225.github.io/exploratory-midtraining-robot-policies/media/teaser.jpg",
+  "datePublished": "2026-11"
 }
   </script>
   <link rel="icon" href="media/favicon-32.png" sizes="32x32" type="image/png">
@@ -196,10 +216,10 @@
 <section class="paper-section" id="tasks"><h2>Environments, Tasks, and Robot Setups</h2>
 <p>The experiments test bimanual manipulation in simulation and on three real platforms. Each domain pairs standard demonstrations with a β-DATA dataset of similar duration.</p>
 <div class="tasks">
-<div class="task"><img loading="lazy" src="media/simulation.jpg" alt=""><div><h3>Simulated grocery packing</h3><p>Move groceries between trays. Short tasks require a placement or another small change. Medium tasks require several direct placements. Long tasks require rearrangement or a larger set of placements. In-distribution tasks appeared in training. Out-of-distribution tasks have held-out goals and configurations.</p><p class="hours">Standard <span>6.1 h</span> · β-DATA <span>5.9 h</span></p></div></div>
-<div class="task"><img loading="lazy" src="media/packing-scene.jpg" alt=""><div><h3>Real-world grocery packing (xArm)</h3><p>Pack each named item into its assigned container. An early placement can leave too little room to grasp or insert the next item.</p><p class="hours">Standard <span>4.4 h</span> · β-DATA <span>4.9 h</span></p></div></div>
-<div class="task"><img loading="lazy" src="media/lego-interlock-card.jpg" alt=""><div><h3>LEGO disassembly and sorting (YAM)</h3><p>Pull interlocking bricks apart and sort them into their assigned trays. Interlock starts with a single assembly. Double starts with two assemblies.</p><p class="hours">Standard <span>4.0 h</span> · β-DATA <span>4.0 h</span></p></div></div>
-<div class="task"><img loading="lazy" src="media/pants.jpg" alt=""><div><h3>Garment folding (Raiden YAM)</h3><p>Fold the pant legs together, then fold the pants in half. For a T-shirt, fold in the sleeves and fold the garment in half, then in half again.</p><p class="hours">Pants · Standard <span>8.1 h</span> · β-DATA <span>7.9 h</span><br>T-shirt · Standard <span>4.2 h</span> · β-DATA <span>4.6 h</span></p></div></div>
+<div class="task"><img loading="lazy" src="media/simulation.jpg" alt="Simulated bimanual robot moving groceries between trays"><div><h3>Simulated grocery packing</h3><p>Move groceries between trays. Short tasks require a placement or another small change. Medium tasks require several direct placements. Long tasks require rearrangement or a larger set of placements. In-distribution tasks appeared in training. Out-of-distribution tasks have held-out goals and configurations.</p><p class="hours">Standard <span>6.1 h</span> · β-DATA <span>5.9 h</span></p></div></div>
+<div class="task"><img loading="lazy" src="media/packing-scene.jpg" alt="Bimanual xArm robot packing grocery items into containers"><div><h3>Real-world grocery packing (xArm)</h3><p>Pack each named item into its assigned container. An early placement can leave too little room to grasp or insert the next item.</p><p class="hours">Standard <span>4.4 h</span> · β-DATA <span>4.9 h</span></p></div></div>
+<div class="task"><img loading="lazy" src="media/lego-interlock-card.jpg" alt="YAM robot grippers pulling interlocking LEGO bricks apart"><div><h3>LEGO disassembly and sorting (YAM)</h3><p>Pull interlocking bricks apart and sort them into their assigned trays. Interlock starts with a single assembly. Double starts with two assemblies.</p><p class="hours">Standard <span>4.0 h</span> · β-DATA <span>4.0 h</span></p></div></div>
+<div class="task"><img loading="lazy" src="media/pants.jpg" alt="Robot arms folding a pair of blue pants"><div><h3>Garment folding (Raiden YAM)</h3><p>Fold the pant legs together, then fold the pants in half. For a T-shirt, fold in the sleeves and fold the garment in half, then in half again.</p><p class="hours">Pants · Standard <span>8.1 h</span> · β-DATA <span>7.9 h</span><br>T-shirt · Standard <span>4.2 h</span> · β-DATA <span>4.6 h</span></p></div></div>
 </div></section>
 <section class="paper-section" id="results"><h2>Results</h2><nav class="result-nav" aria-label="Results subsections"><a href="#zero">Zero-shot</a><a href="#recovery">Recovery</a><a href="#scaling">Scaling</a><a href="#online">Finetuning</a><a href="#ablations">Ablations</a><a href="#postbc">PostBC</a></nav>
 <h3 id="zero">Result 1: Zero-shot successes from β-DATA compared with standard demonstrations</h3><p>A success requires the whole task to be complete. Progress gives partial credit for correct placements, separated and sorted bricks, or completed folds. β-DATA improves both measures across all reported task groups.</p>
